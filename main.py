@@ -42,7 +42,7 @@ class AppConfig():
         self.userDir = userDir
         pass
     
-class RaceCaptureApp(App):
+class MainApp(App):
     
     appConfig = AppConfig()
     
@@ -71,7 +71,7 @@ class RaceCaptureApp(App):
     mainViews = None
     
     def __init__(self, **kwargs):
-        super(RaceCaptureApp, self).__init__(**kwargs)
+        super(MainApp, self).__init__(**kwargs)
         #self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
         #self._keyboard.bind(on_key_down=self._on_keyboard_down)    
         
@@ -188,7 +188,7 @@ class RaceCaptureApp(App):
             
         
     def build(self):
-        Builder.load_file('racecapture.kv')
+        Builder.load_file('main.kv')
         statusBar = kvFind(self.root, 'rcid', 'statusbar')
         statusBar.bind(on_main_menu=self.on_main_menu)
         
@@ -263,4 +263,4 @@ class RaceCaptureApp(App):
         alertPopup('Could not detect', 'Could not detect RaceCapture/Pro\n\nPlease ensure it is plugged in and appropriate drivers are installed')
 if __name__ == '__main__':
 
-    RaceCaptureApp().run()
+    MainApp().run()
