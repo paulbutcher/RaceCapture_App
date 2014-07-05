@@ -13,13 +13,12 @@ promptyn () {
 
 pushd ~/android/python-for-android
 if promptyn "Rebuild the Python on Android distribution? Only needs to be done if you've changed which prereqs are installed, or upgraded Kivy, or that sort of thing. Oh yeah, also it takes absolutely ages. [Y/N]"; then
-	rm -rf dist
-	rm -rf build
 	# for some reason adding pygments to this (either before or after kivy) doesn't work
+	# pass the "-f" switch to distribute.sh to do a "clean" build, if you want to. 
 	./distribute.sh -m "kivy"
 fi
 	
 pushd ~/android/python-for-android/dist/default
-./build.py --dir ~/RaceCapture_App --package com.racecapture.racecapture --name "RaceCapture" --version 0.0.1 debug installd --icon ~/RaceCapture_App/resource/race_capture_icon.png
+./build.py --dir ~/RaceCapture_App --package com.racecapture.racecapture --name "RaceCapture" --version 0.0.1 debug installd --permission INTERNET --icon ~/RaceCapture_App/resource/race_capture_icon.png
 echo "Monitoring Android LogCat... Ctrl-C if you're not interested in that!"
-~/android/android-sdk-linux/platform-tools/adb logcat | grep python
+~/android/android-sdk-linux/platform-tools/adb logcat *:S 'python'
