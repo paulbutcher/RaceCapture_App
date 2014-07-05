@@ -98,11 +98,19 @@ Dependencies:
 
     python racecapture.py
 
-## Preparing to build installers (for Android)
+## Preparing to build installers (on Ubuntu VM, for Android)
 
 1. Install [VirtualBox] (https://www.virtualbox.org/)
 1. Download and extract the [Kivy Python for Android VM] (http://kivy.org/#download) (while it may be tempting to try and set up your own Ubuntu machine for this, it becomes less appealing after hunting for weird version combos of the Android SDK and NDK that appear to be no longer available for download)
 1. Follow [these instructions] (http://pythonthusiast.pythonblogs.com/230_pythonthusiast/archive/1346_starting_to_use_kivy__developing_letter_of_heroes_an_android_alphabet_teaching_aid_application_for_kids-part_1_of_2.html) to set up the Kivy VM
+1. Follow the standard Kivy Ubuntu install instructions (as otherwise you have a 1.5.2 version of Kivy, which won't run RaceCapture). Maybe also delete ~/code/kivy (the old Kivy install) just for good measure
 1. add your GitHub repo to the shared folders for the VM as "RaceCapture_App"
 1. Reboot the VM
-1. `sudo mount -t vboxsf RaceCapture_App ~/RaceCapture_App` (you're supposed to be able to do this in /etc/fstab but for some reason it's not working for me)
+1. `sudo pip install -r requirements.txt`
+
+## Build installers (on Ubuntu VM, for Android)
+
+1. `sudo mount -t vboxsf RaceCapture_App ~/RaceCapture_App` - password for VM is 'kivy123' (you're supposed to be able to do this in /etc/fstab but for some reason it's not working for me)
+1. `cd RaceCapture_App/install`
+1. `./buildandroidinstall.sh`
+1. To see logcat output: `~/android/android-sdk-linux/platform-tools/adb logcat | grep python`
