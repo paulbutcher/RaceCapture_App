@@ -20,6 +20,6 @@ if promptyn "Rebuild the Python on Android distribution? Only needs to be done i
 fi
 	
 pushd ~/android/python-for-android/dist/default
-./build.py --dir ~/RaceCapture_App --package com.racecapture.racecapture --name "RaceCapture" --version 0.0.1 debug installd
+./build.py --dir ~/RaceCapture_App --package com.racecapture.racecapture --name "RaceCapture" --version 0.0.1 debug installd --icon ~/RaceCapture_App/resource/race_capture_icon.png
 echo "Monitoring Android LogCat... Ctrl-C if you're not interested in that!"
 ~/android/android-sdk-linux/platform-tools/adb logcat | grep python
