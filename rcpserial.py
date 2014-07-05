@@ -1,4 +1,3 @@
-import serial
 import io
 import json
 import traceback
@@ -6,7 +5,6 @@ import Queue
 from time import sleep
 from threading import Thread, RLock
 from rcpconfig import *
-from serial.tools import list_ports
 from functools import partial
 
 CHANNEL_ADD_MODE_IN_PROGRESS = 1

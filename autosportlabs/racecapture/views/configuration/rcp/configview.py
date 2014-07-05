@@ -23,7 +23,7 @@ from autosportlabs.racecapture.views.configuration.rcp.obd2channelsview import *
 from autosportlabs.racecapture.views.configuration.rcp.canconfigview import *
 from autosportlabs.racecapture.views.configuration.rcp.telemetryconfigview import *
 from autosportlabs.racecapture.views.configuration.rcp.wirelessconfigview import *
-from autosportlabs.racecapture.views.configuration.rcp.scriptview import *
+#from autosportlabs.racecapture.views.configuration.rcp.scriptview import *
 from autosportlabs.racecapture.views.file.loaddialogview import LoadDialog
 from autosportlabs.racecapture.views.file.savedialogview import SaveDialog
 from autosportlabs.racecapture.views.util.alertview import alertPopup, confirmPopup
@@ -124,12 +124,12 @@ class ConfigView(Screen):
         attach_node('OBDII', None, OBD2ChannelsView(channels=self.channels))
         attach_node('Wireless', None, WirelessConfigView())
         attach_node('Telemetry', None, TelemetryConfigView())
-        scriptView = LuaScriptingView()
-        scriptView.bind(on_run_script=self.runScript)
-        scriptView.bind(on_poll_logfile=self.pollLogfile)
-        attach_node('Scripting', None, scriptView)
+        #scriptView = LuaScriptingView()
+        #scriptView.bind(on_run_script=self.runScript)
+        #scriptView.bind(on_poll_logfile=self.pollLogfile)
+        #attach_node('Scripting', None, scriptView)
         attach_node('Channels', None, ChannelsView())
-        self.scriptView = scriptView
+        #self.scriptView = scriptView
         
         tree.bind(selected_node=on_select_node)
         tree.select_node(defaultNode)
